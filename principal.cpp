@@ -45,9 +45,27 @@ int main(){
 
 }
 
-int*** 
+int*** hacerCalculos(int*** matriz){
+	
+}
 
-void imprimirMatriz(int*** matriz){
+
+void mostrarProcedimiento(int*** procedimiento, int a, int size){
+	for(int i=0; i<size; i++){
+		cout<<"--------------------------------------"<<endl;
+		for(int j=0; i<3; i++ ){
+			for(int z=0; z<size; z++){
+				cout<<" "<<procedimiento[i][j][z]<<" ";
+			
+			}
+
+			if(j==0){
+		 		cout<<"|"<<a<<endl;
+			}else if(j==1){
+				cout<<endl<<"_____________________"<<endl;
+			}
+		}
+	}
 }
 
 
