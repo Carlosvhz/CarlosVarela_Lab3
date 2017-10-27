@@ -13,7 +13,7 @@ int main(){
 	char resp;
 	int opcion;
 	do{
-		cout<<endl<<"___Lab 2___"<<endl;
+		cout<<"___Lab 2__"<<endl;
 		cout<<"Ingrese numero de ejercicio: ";
 		cin>>opcion;
 		cout<<endl;
@@ -60,25 +60,22 @@ int main(){
 }
 
 int*** hacerCalculos(int*** matriz, int size, int a){
-	int y=2, x1=0, x=0,  multiplicar = 0;
+	int y=2, x=0, multiplicar = 0;
 	for(int i=1; i<size; i++){
-		for(int j=0; j<3; j++){
-			for(int k=0; k<size; k++){
-				matriz[i][j][k]= matriz[i-1][j][k];
-			}
-		}
+		cout<<"###########bajo "<<matriz[i][2][x]<<" ###"<<endl;
 		multiplicar = matriz[i][2][x]*a;
 		x+=1;
 		matriz[i][1][x]=multiplicar;
-	        matriz[i][2][x]=matriz[i][0][x]+multiplicar;
+		cout<<"########multiplicacion "<<matriz[i][1][x]<<" ###"<<endl;
+	        matriz[i][2][x]=matriz[i][0][x]+multiplicar;	
+		cout<<"########suma"<<matriz[i][2][x]<<"###"<<endl;
 	}
-	return matriz;
 }
 
 
 void mostrarProcedimiento(int*** procedimiento, int a, int size){
 	for(int i=0; i<size; i++){
-		cout<<endl<<"________________________________"<<endl;
+		cout<<endl<<"|_______________________________________|"<<endl;
 		for(int j=0; j<3; j++ ){
 			for(int z=0; z<size; z++){
 				cout<<" "<<procedimiento[i][j][z]<<" ";
