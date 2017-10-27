@@ -8,8 +8,7 @@ using namespace std;
 int*** crearMatriz(int);
 int*** hacerCalculos(int***,int,int);
 void mostrarProcedimiento(int***, int, int);
-
-
+string cadena(string);
 
 int main(){
 	char resp;
@@ -48,14 +47,15 @@ int main(){
 			       }
 				break;
 			case 3:
-				string cadena;
+				string fecha;
 				cout<<"---- Ejercicio 3 ----";
 				cout<<endl<<"Ingrese cadena: ";
-				cin>>cadena;
-				while(cadena.length()<8||cadena.length()>8){
+				cin>>fecha;
+				while(fecha.length()<8||fecha.length()>8){
 					cout<<"Ingrese otra cadena: ";
-					cin>>cadena;
-				}	
+					cin>>fecha;
+				}
+				cadena(fecha);	
 				break;	
 
 		}
@@ -69,11 +69,22 @@ int main(){
 
 //Funciones ejercicio 3
 string cadena(string fecha){
-
+	cout<<"prueba";
+	string dia="", anio="", mes="";
+	anio+=fecha.at(0);
+	anio+=fecha.at(1);	
+	anio+=fecha.at(2);	
+	anio+=fecha.at(3);	
+	mes+=fecha.at(4);	
+	mes+=fecha.at(5);	
+	dia+=fecha.at(6);
+	dia+=fecha.at(7);
+	cout<<anio[1];
+	return fecha;	
 }
 
 
-//Funciones ejercicio 2
+//Funciones ejercicio 2	
 
 int*** hacerCalculos(int*** matriz, int size, int a){
 	int y=2, x1=0, x=0,  multiplicar = 0;
