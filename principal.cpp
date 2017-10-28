@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cstdlib>
 
 using namespace std;
 
@@ -9,6 +10,9 @@ int*** crearMatriz(int);
 int*** hacerCalculos(int***,int,int);
 void mostrarProcedimiento(int***, int, int);
 string cadena(string);
+bool cadenaValida(string);
+bool anioBi(int);
+bool evaluarFecha(int,int,int);
 
 int main(){
 	char resp;
@@ -19,9 +23,11 @@ int main(){
 		cin>>opcion;
 		cout<<endl;
 		switch(opcion){
-			case 1:
+			case 1:{
 				cout<<"---- Ejercicio 1 ----";
-				
+				vector<int>numeros;	
+						
+			       }
 				break;
 			case 2:{
 				int grado=0, coeficiente=0, a=0, cont=0;      
@@ -43,19 +49,21 @@ int main(){
 				cout<<"Ingrese a: ";
 				cin>>a;
 				matriz = hacerCalculos(matriz,grado+1,a);
-			        mostrarProcedimiento(matriz,a,grado+1);
+				mostrarProcedimiento(matriz,a,grado+1);
+			       	
 			       }
 				break;
-			case 3:
+			case 3:{
 				string fecha;
 				cout<<"---- Ejercicio 3 ----";
 				cout<<endl<<"Ingrese cadena: ";
 				cin>>fecha;
-				while(fecha.length()<8||fecha.length()>8){
+				while(fecha.length()<8||fecha.length()>8||cadenaValida(fecha)==false){
 					cout<<"Ingrese otra cadena: ";
 					cin>>fecha;
-				}
-				cadena(fecha);	
+				}	
+			       	cout<<"Resultado: "<<cadena(fecha);
+			       }	
 				break;	
 
 		}
@@ -64,25 +72,83 @@ int main(){
 	}while(resp=='s');
 
 
-
+	return 0;
 }
 
 //Funciones ejercicio 3
+
 string cadena(string fecha){
-	cout<<"prueba";
 	string dia="", anio="", mes="";
-	anio+=fecha.at(0);
-	anio+=fecha.at(1);	
+	int d, a, m;
 	anio+=fecha.at(2);	
 	anio+=fecha.at(3);	
 	mes+=fecha.at(4);	
 	mes+=fecha.at(5);	
 	dia+=fecha.at(6);
 	dia+=fecha.at(7);
-	cout<<anio[1];
-	return fecha;	
+	d = atoi(dia.c_str());
+ 	a = atoi(anio.c_str());
+	m = atoi(mes.c_str());
+	if(evaluarFecha(a,m,d)==true){	
+		fecha = "Cadena correcta";
+		return fecha;
+	}else{
+		fecha = "Cadena incorrecta";
+		return fecha;
+	}
+	
 }
 
+bool evaluarFecha(int anio, int mes, int dia){
+	if(anioBi(anio)){
+		if(mes==2&&dia>29){
+			return false;
+		}
+	}
+	if(anioBi(anio)==false){
+		if(mes==2&&dia>28){
+			return false;
+		}
+	}
+	if(mes>12){
+		return false;
+	}
+	if(mes>7){
+		if(mes%2==0&&dia>31){
+			return false;
+		}
+		if(mes%2!=0&&dia>30){
+			return false;
+		}
+	}
+	if(mes<7){
+		if(mes%2==0&&dia>30){
+			return false;
+		}
+		if(mes%2!=0&&dia>31){
+			return false;
+		}
+	}
+	return true;	
+}
+
+
+bool cadenaValida(string cadena){
+	for(int i=0; i<cadena.length(); i++){
+		if(cadena[i]<48||cadena[i]>57){
+			return false;
+		}
+	}
+	return true;
+}
+
+bool anioBi(int anio){
+	if(anio%4==0){
+		return true;	
+	}else{
+		return false;
+	}
+}
 
 //Funciones ejercicio 2	
 
