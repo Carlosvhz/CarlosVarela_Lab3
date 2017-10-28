@@ -55,6 +55,7 @@ int main(){
 			       }
 				break;
 			case 3:{
+				vector<string>fechas;
 				string fecha;
 				cout<<"---- Ejercicio 3 ----";
 				cout<<endl<<"Ingrese cadena: ";
@@ -63,7 +64,8 @@ int main(){
 					cout<<"Ingrese otra cadena: ";
 					cin>>fecha;
 				}	
-			       	cout<<"Resultado: "<<cadena(fecha);
+				fechas.push_back(fecha);
+			       	cout<<"Fecha guardada";
 			       }	
 				break;	
 
@@ -79,9 +81,12 @@ int main(){
 //Funciones ejercicio 3
 
 string cadena(string fecha){
+	
 	int resultado;
 	int meses[] = {0,3,3,6,1,4,6,2,5,0,3,5};	
   	int dias[] = {1,2,3,4,5,6,0};	
+	//vector<string> fechas;
+	
 	string dia="", anio="", mes="", anioCompleto;
 	int d, a, m, aniocompleto, numero=0;
 	anio+=fecha.at(2);	
