@@ -25,8 +25,8 @@ int main(){
 		cout<<endl;
 		switch(opcion){
 			case 1:{
-				cout<<"---- Ejercicio 1 ----";
-				vector<int>numeros;	
+				cout<<"---- Ejercicio 1 ----"<<endl;
+				cout<<"#####Ejercicio no resuelto####"<<endl;	
 						
 			       }
 				break;
@@ -50,22 +50,55 @@ int main(){
 				cout<<"Ingrese a: ";
 				cin>>a;
 				matriz = hacerCalculos(matriz,grado+1,a);
+				cout<<"El residuo es: ";
+				int contador = 0;
+				for(int i=grado; i>0; i--){
+					cout<<matriz[grado][2][contador]<<"x^"<<i-1<<" + "; 
+					contador++;
+				}
+				cout<<endl<<"El residuo es: "<<matriz[grado][2][grado];
 				mostrarProcedimiento(matriz,a,grado+1);
 			       	
 			       }
 				break;
 			case 3:{
+				char res;
+				int opcion;
 				vector<string>fechas;
 				string fecha;
 				cout<<"---- Ejercicio 3 ----";
-				cout<<endl<<"Ingrese cadena: ";
-				cin>>fecha;
-				while(fecha.length()<8||fecha.length()>8||cadenaValida(fecha)==false){
-					cout<<"Ingrese otra cadena: ";
+				do{	
+					cout<<endl<<"Ingrese cadena: ";
 					cin>>fecha;
-				}	
-				fechas.push_back(fecha);
-			       	cout<<"Fecha guardada";
+					while(fecha.length()<8||fecha.length()>8||cadenaValida(fecha)==false){
+						cout<<"Ingrese otra cadena: ";
+						cin>>fecha;
+					}
+					fechas.push_back(fecha);
+					cout<<"------------"<<endl<<"Ingresar otra fecha[s]: ";
+					cin>>res;
+					cout<<endl;
+				}while(res=='s');	
+				cout<<"___Listar__"<<endl;
+				cout<<"1. Listar todo"<<endl;
+				cout<<"Ingrese opcion: ";
+				cin>>opcion;
+				while(opcion<0||opcion>2){
+					cout<<"Ingrese una opcion existente: ";
+					cin>>opcion;
+				}
+				switch(opcion){
+					case 1:{
+						cout<<"---- Listar todo ----"<<endl;
+						for(int i=0; i<fechas.size(); i++){
+							cout<<"Fecha: "<<cadena(fechas[i])<<endl;
+						}
+					       }
+					       break;
+					default:
+					       cout<<"#### Demas funciones no realizadas ####"<<endl;
+					       break;
+				}
 			       }	
 				break;	
 
