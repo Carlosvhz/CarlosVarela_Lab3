@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
 #include <string>
 #include <cstdlib>
 
@@ -78,19 +79,55 @@ int main(){
 //Funciones ejercicio 3
 
 string cadena(string fecha){
-	string dia="", anio="", mes="";
-	int d, a, m;
+	int resultado;
+	int meses[] = {0,3,3,6,1,4,6,2,5,0,3,5};	
+  	int dias[] = {1,2,3,4,5,6,0};	
+	string dia="", anio="", mes="", anioCompleto;
+	int d, a, m, aniocompleto, numero=0;
 	anio+=fecha.at(2);	
 	anio+=fecha.at(3);	
+	anioCompleto+=fecha.at(0);
+	anioCompleto+=fecha.at(1);
+	anioCompleto+=fecha.at(2);
+	anioCompleto+=fecha.at(3);
 	mes+=fecha.at(4);	
 	mes+=fecha.at(5);	
 	dia+=fecha.at(6);
 	dia+=fecha.at(7);
+	aniocompleto = atoi(anioCompleto.c_str());
 	d = atoi(dia.c_str());
  	a = atoi(anio.c_str());
 	m = atoi(mes.c_str());
-	if(evaluarFecha(a,m,d)==true){	
-		fecha = "Cadena correcta";
+	if(evaluarFecha(a,m,d)){	
+		if(aniocompleto>=1800&&aniocompleto<=1899){
+			numero = 2;
+		}else if(aniocompleto>=2000&&aniocompleto<=2099){
+			numero = 6;	
+		}
+		resultado = (d+meses[m-1]+a+(a/4)+numero)%7;
+		switch(resultado){
+			case 1:{
+			       	return "Lunes";
+			       }
+			case 2:{
+				return "Martes";
+			       }
+			case 3:{
+			       	return "Miercoles";
+			       }
+			case 4:{
+			       	return "Jueves";
+			       }
+			case 5:{
+			       	return "Viernes";
+			       }
+			case 6:{
+			       	return "Sabado";
+			       }
+			case 0:{
+			       	return "Domingo";
+			       }
+		}	
 		return fecha;
 	}else{
 		fecha = "Cadena incorrecta";
